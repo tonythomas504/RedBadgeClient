@@ -1,24 +1,62 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import Signup from './Signup'
+import SignIn from './SignIn'
 
-type AuthState = {
-    username: string,
-    password: string;
-    isButtonDisabled: boolean;
-    helperText: string;
-    isError: boolean;
+
+interface AuthState {
+    isLogin: boolean
 }
 
-const intialState:AuthState = {
-    username: '',
-    password: '',
-    isButtonDisabled: true,
-    helperText: '',
-    isError: false,
-} 
+type AuthProps = {
+    updateToken: (newToken: string) => void
+}
 
-type Action = 
-{type: 'setusername', payload: string} |
-{type: 'setPassword', payload: string} |
-{type: 'setIsButtonDisabled', payload: string} | {type: 'loginSuccess', payload: string} |
-{type: 'loginFailed', payload: string} |
-{type: 'setIsError', payload: boolean};
+export default class Auth extends React.Component<AuthProps,AuthState> {
+    constructor(props: AuthProps) {
+        super(props);
+        this.state ={
+            isLogin: true
+        }
+    }
+
+    isLoginHandler(){
+        this.setState({
+            isLogin: !this.state.isLogin
+        })
+    }
+
+    toggle = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        if (this.state.isLogin === false) {
+            return this.setState({
+                isLogin: true
+            })
+        }
+    }
+
+    render(){
+
+
+        return(
+            <div>
+                {this.state.isLogin ? (
+                    <Signup 
+                    isLogin={this.state.isLogin}
+                    isLoginHandler={this.isLoginHandler.bind(this)}
+                    updateToken={this.props.updateToken}
+                    />
+                ): (
+                    <SignIn
+                    isLogin={this.state.isLogin}
+                    isLoginHandler={this.isLoginHandler.bind(this)}
+                    updateToken={this.props.updateToken}
+                    />
+                )}
+
+            </div>
+        )
+    }
+
+}
+
