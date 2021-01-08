@@ -26,14 +26,14 @@ export default class Auth extends React.Component<AuthProps,AuthState> {
         })
     }
 
-    toggle = (e: React.SyntheticEvent) => {
-        e.preventDefault();
-        if (this.state.isLogin === false) {
-            return this.setState({
-                isLogin: true
-            })
-        }
-    }
+    // toggle = (e: React.SyntheticEvent) => {
+    //     e.preventDefault();
+    //     if (this.state.isLogin === false) {
+    //         return this.setState({
+    //             isLogin: true
+    //         })
+    //     }
+    // }
 
     render(){
 
@@ -41,13 +41,13 @@ export default class Auth extends React.Component<AuthProps,AuthState> {
         return(
             <div>
                 {this.state.isLogin ? (
-                    <Signup 
+                    <SignIn 
                     isLogin={this.state.isLogin}
                     isLoginHandler={this.isLoginHandler.bind(this)}
                     updateToken={this.props.updateToken}
                     />
                 ): (
-                    <SignIn
+                    <Signup
                     isLogin={this.state.isLogin}
                     isLoginHandler={this.isLoginHandler.bind(this)}
                     updateToken={this.props.updateToken}

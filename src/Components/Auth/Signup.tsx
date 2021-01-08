@@ -59,7 +59,7 @@ export default class SignUp extends React.Component<SignUpProps, SignUpFields>{
         return(
             <div>
                 <h1>Sign Up - Join VibeCast</h1>
-                <form onSubmit={this.handleSubmit.bind(this)}>
+                <form onSubmit={this.handleSubmit.bind(this)} >
                 <input type="text" value={this.state.email} onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({email: e.currentTarget.value})} placeholder="email"></input>
                 <br />
                 <input type="text" value={this.state.username} onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({username: e.currentTarget.value})} placeholder="username"></input>
