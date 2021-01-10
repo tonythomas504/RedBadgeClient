@@ -1,0 +1,79 @@
+import React from 'react'
+import {
+    Button,
+    Container,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    IconButton,
+    TextField,
+    Typography
+} from '@material-ui/core';
+
+type Props = {
+    token: string,
+    fetchPlaylist: () => void
+
+    
+}
+
+type State = {
+    title: string,
+    songs: string
+}
+
+export default class PlaylistCreate extends React.Component<Props, State>{
+    constructor(props: Props){
+        super(props)
+        this.state = {
+            title: '',
+            songs: ''
+        }
+    }
+
+    onChange(e: any) {
+        this.setState(e.target.value)
+    }
+
+    handleSubmit = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+
+         console.log(this.props.token, this.state.title, this.state.songs)
+
+        const url = 'http://localhost:4000/playlist/createplaylist'
+        fetch(url, {
+            method: 'POST',
+            body: JSON.stringify({Title: this.state.title, Songs: this.state.songs}),
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': this.props.token
+            })
+        })
+        .then((res) =>  res.json())
+        .then((data) => {
+            
+            
+            console.log(data);
+            
+        })      
+    }
+
+
+   
+
+    render() {
+        return(
+      <div>
+            <form onSubmit={this.handleSubmit}>
+            <input type="text" value={this.state.title} onChange={(e) => this.setState({title: e.currentTarget.value})} placeholder="Playlist title"/>
+            <input type="text" value={this.state.songs} onChange={(e) => this.setState({songs: e.currentTarget.value})} placeholder="Song name - Arist,"/>
+            <button type="submit">Submit</button>
+
+
+            </form>
+        </div>
+        )
+    }
+
+}

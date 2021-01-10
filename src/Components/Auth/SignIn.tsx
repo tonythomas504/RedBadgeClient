@@ -35,8 +35,8 @@ export default class SignIn extends React.Component<SignInProps, SignInFields>{
         })
         .then(response => response.json())
             .then(data => {
-                console.log(data)
-                this.props.updateToken(data.sessionToken)
+                console.log(data);
+                this.props.updateToken(data.token)
             })
 
     }
