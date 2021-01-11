@@ -12,8 +12,7 @@ import {
 } from '@material-ui/core';
 
 type Props = {
-    token: string,
-    fetchPlaylist: () => void
+    token: string ,
 
     
 }
@@ -44,11 +43,11 @@ export default class PlaylistCreate extends React.Component<Props, State>{
         const url = 'http://localhost:4000/playlist/createplaylist'
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify({Title: this.state.title, Songs: this.state.songs}),
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': this.props.token
-            })
+            }),
+            body: JSON.stringify({Title: this.state.title, Songs: this.state.songs})
         })
         .then((res) =>  res.json())
         .then((data) => {

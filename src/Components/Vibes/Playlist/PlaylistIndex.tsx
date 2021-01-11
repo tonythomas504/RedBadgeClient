@@ -9,41 +9,25 @@ type Props = {
 }
 
 type State = {
-    playlist: Array<{ id: number, title: string, songs: string }>,
+    playlist: [];
 
 }
 
-type Playlist = {
-    id: number,
-    title: string,
-    songs: string
-}
 
 export default class PlaylistIndex extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props)
         this.state = {
+
             playlist: []
         }
-        this.handlePlaylistDisplay = this.handlePlaylistDisplay.bind(this)
+        this.callPlaylist = this.callPlaylist.bind(this)
     }
 
-    handlePlaylistDisplay = () => {
-        return this.state.playlist.map((playlist: Playlist) => {
-            return (
-                <ul key={playlist.id}>
-                    <li>{playlist.title}</li>
-                    <li>{playlist.songs}</li>
-                </ul>
-            );
-        });
-    };
 
-    componentDidMount() {
-        this.fetchPlaylist()
-    }
 
-    fetchPlaylist() {
+    callPlaylist() {
+        console.log('hit')
         const url = 'http://localhost:4000/playlist/myplaylist'
         fetch(url, {
             method: 'GET',
@@ -55,7 +39,6 @@ export default class PlaylistIndex extends React.Component<Props, State> {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                console.log(data.playlists);
                 this.setState({
                     playlist: data
                 })
@@ -63,20 +46,29 @@ export default class PlaylistIndex extends React.Component<Props, State> {
             })
     }
 
-
+    componentDidMount() {
+        this.callPlaylist();
+        console.log(this.state.playlist);
+    }
 
     render() {
         return (
             <div>
-               <h1>Hello</h1>
-              
-                <div>
-                {this.handlePlaylistDisplay()}
-                    {/* <Router>
-                        <PlaylistCreate token={this.props.token} />
-                    </Router> */}
-                </div>
-                <PlaylistCreate fetchPlaylist={this.fetchPlaylist.bind(this)} token={this.props.token} />
+
+                <PlaylistCreate token={this.props.token} />
+                {/* {this.state.playlist ? this.state.playlist.map(playlist => (
+                  <ul key={playlist.id}>
+                      <h1>Canyou see me</h1>
+                      <li>{playlist}</li>
+                      <li>{playlist.songs}</li>
+                  </ul>
+              )) : undefined} */} {this.state.playlist.map((playlist: any) => (
+                    <ul>
+                        <li>{playlist.Title}</li>
+                        <li>{playlist.Songs}</li>
+                    </ul>
+                ))}
+                <button onClick={this.callPlaylist}>Submit</button>
             </div>
         )
     }

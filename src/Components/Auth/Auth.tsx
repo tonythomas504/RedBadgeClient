@@ -12,15 +12,15 @@ type AuthProps = {
     updateToken: (newToken: string) => void
 }
 
-export default class Auth extends React.Component<AuthProps,AuthState> {
+export default class Auth extends React.Component<AuthProps, AuthState> {
     constructor(props: AuthProps) {
         super(props);
-        this.state ={
+        this.state = {
             isLogin: true
         }
     }
 
-    isLoginHandler(){
+    isLoginHandler() {
         this.setState({
             isLogin: !this.state.isLogin
         })
@@ -35,24 +35,24 @@ export default class Auth extends React.Component<AuthProps,AuthState> {
     //     }
     // }
 
-    render(){
+    render() {
 
 
-        return(
+        return (
             <div>
-                {this.state.isLogin ? (
-                    <SignIn 
+                {/* {this.state.isLogin ? ( */}
+                <SignIn
                     isLogin={this.state.isLogin}
                     isLoginHandler={this.isLoginHandler.bind(this)}
                     updateToken={this.props.updateToken}
-                    />
-                ): (
-                    <Signup
+                />
+                {/* // ): ( */}
+                <Signup
                     isLogin={this.state.isLogin}
                     isLoginHandler={this.isLoginHandler.bind(this)}
                     updateToken={this.props.updateToken}
-                    />
-                )}
+                />
+                {/* // )} */}
 
             </div>
         )
