@@ -1,6 +1,9 @@
 import React from 'react'
 import PlaylistCreate from './PlaylistCreate'
+import PlaylistEdit from './PlaylistEdit'
+import CommentsIndex from '../../Comments/CommentsIndex'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { string } from 'prop-types'
 
 type Props = {
     updateToken: (newToken: string) => void,
@@ -10,6 +13,12 @@ type Props = {
 
 type State = {
     playlist: [];
+    playlistUpdated: any,
+    updateActive: boolean,
+    fetchItems: any,
+    editPlaylist: any | null,
+    isUpdated: boolean
+
 
 }
 
@@ -18,8 +27,13 @@ export default class PlaylistIndex extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props)
         this.state = {
+            editPlaylist: null,
+            playlist: [],
+            playlistUpdated: {},
+            updateActive: false,
+            fetchItems: {},
+            isUpdated: false
 
-            playlist: []
         }
         this.callPlaylist = this.callPlaylist.bind(this)
     }
@@ -28,7 +42,7 @@ export default class PlaylistIndex extends React.Component<Props, State> {
 
     callPlaylist() {
         console.log('hit')
-        const url = 'http://localhost:4000/playlist/myplaylist'
+        const url = 'http://localhost:4000/playlist/'
         fetch(url, {
             method: 'GET',
             headers: new Headers({
@@ -51,9 +65,28 @@ export default class PlaylistIndex extends React.Component<Props, State> {
         console.log(this.state.playlist);
     }
 
+    updateOff = () => {
+        this.setState({
+            updateActive: false
+        })
+    }
+
+    updateOn = (e: boolean) => {
+        this.setState({
+            updateActive: true
+        })
+    }
+
+    editPlaylist = (playlist: any) => {
+        this.setState({
+            editPlaylist: playlist,
+            isUpdated: true
+        })
+    }
     render() {
         return (
             <div>
+                {/* <CommentsIndex token={this.props.token} updateToken={this.props.updateToken} clearToken={this.props.clearToken} /> */}
 
                 <PlaylistCreate token={this.props.token} />
                 {/* {this.state.playlist ? this.state.playlist.map(playlist => (
@@ -66,9 +99,12 @@ export default class PlaylistIndex extends React.Component<Props, State> {
                     <ul>
                         <li>{playlist.Title}</li>
                         <li>{playlist.Songs}</li>
+                        <li><button onClick={(event) => this.editPlaylist(playlist)}>Edit</button></li>
                     </ul>
                 ))}
                 <button onClick={this.callPlaylist}>Submit</button>
+
+                {this.state.isUpdated ? <PlaylistEdit playlistUpdated={this.state.playlistUpdated} token={this.props.token} updateOff={this.updateOff.bind(this)} fetchItems={this.state.fetchItems} editPlaylist={this.state.editPlaylist} /> : null}
             </div>
         )
     }
