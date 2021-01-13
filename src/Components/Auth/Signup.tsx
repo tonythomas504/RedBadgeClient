@@ -1,8 +1,7 @@
 import React from 'react'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
+import { Button, Card, CardContent, TextField } from '@material-ui/core'
 import PropTypes from 'prop-types'
-import APIURL from '../../helpers/environment'
+// import APIURL from '../../helpers/environment'
 
 
 type SignUpFields = {
@@ -41,7 +40,7 @@ export default class SignUp extends React.Component<SignUpProps, SignUpFields>{
         e.preventDefault();
 
 
-        const url = `${APIURL}/user/register`
+        const url = `http://localhost:4000/user/register`
 
         fetch(url, {
             method: 'POST',
@@ -60,16 +59,16 @@ export default class SignUp extends React.Component<SignUpProps, SignUpFields>{
         return (
             <div>
                 <h1>Sign Up - Join VibeCast</h1>
-                <form onSubmit={this.handleSubmit.bind(this)} >
-                    <input type="text" value={this.state.email} onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ email: e.currentTarget.value })} placeholder="email"></input>
+                <Card id="login" onSubmit={this.handleSubmit.bind(this)} >
+                    <TextField type="text" value={this.state.email} onChange={(e) => this.setState({ email: e.currentTarget.value })} placeholder="email" />
                     <br />
-                    <input type="text" value={this.state.username} onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ username: e.currentTarget.value })} placeholder="username"></input>
+                    <TextField type="text" value={this.state.username} onChange={(e) => this.setState({ username: e.currentTarget.value })} placeholder="username" />
                     <br />
-                    <input type="text" value={this.state.password} onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ password: e.currentTarget.value })} placeholder="password"></input><br />
+                    <TextField type="text" value={this.state.password} onChange={(e) => this.setState({ password: e.currentTarget.value })} placeholder="password" /><br />
 
 
-                    <button type="submit">Submit</button>
-                </form>
+                    <Button id="button" type="submit">Submit</Button>
+                </Card>
             </div>
         )
     }

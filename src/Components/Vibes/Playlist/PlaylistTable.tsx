@@ -30,11 +30,11 @@ export default class PlaylistTable extends React.Component<Props> {
         return (
             <div>
                 {this.props.playlist ? this.props.playlist.map((playlist: any) => (
-                    <Card key={playlist.id}>
+                    <Card id="delete" key={playlist.id}>
                         <CardContent>{playlist.Title}</CardContent>
                         <CardContent>{playlist.Songs}</CardContent>
 
-                        <Button variant="outlined"
+                        <Button id="button" variant="outlined"
                             onClick={() => { this.deletePlaylist(playlist) }}> Delete
                         </Button>
                     </Card>

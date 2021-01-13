@@ -1,4 +1,16 @@
 import React from 'react'
+import {
+    Button,
+    Container,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    IconButton,
+    TextField,
+    Typography,
+    ButtonBase
+} from '@material-ui/core';
 
 type Props = {
     token: string
@@ -51,10 +63,10 @@ export default class CommentsCreate extends React.Component<Props, State> {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" value={this.state.title} onChange={(e) => this.setState({ title: e.currentTarget.value })} placeholder="Title" />
-                    <input type="text" value={this.state.body} onChange={(e) => this.setState({ body: e.currentTarget.value })} placeholder="Body" />
+                    <TextField type="text" value={this.state.title} onChange={(e) => this.setState({ title: e.currentTarget.value })} placeholder="Title" />
+                    <TextField type="text" value={this.state.body} onChange={(e) => this.setState({ body: e.currentTarget.value })} placeholder="Body" />
 
-                    <button type="submit">Submit Comment</button>
+                    <Button id="button" type="submit">Submit Comment</Button>
                 </form>
             </div>
         )

@@ -37,9 +37,11 @@ export default class App extends Component<{}, AuthState> {
 
   render() {
     return (
-      <div>
+      <div id="app-background">
+
+        {this.state.token ? <PlaylistIndex updateToken={this.updateToken} token={this.state.token} clearToken={this.clearToken} /> : <Auth updateToken={this.updateToken.bind(this)} />} <br /> <br />
+
         <CommentsIndex token={this.state.token} updateToken={this.updateToken} clearToken={this.clearToken} />
-        {this.state.token ? <PlaylistIndex updateToken={this.updateToken} token={this.state.token} clearToken={this.clearToken} /> : <Auth updateToken={this.updateToken.bind(this)} />}
 
       </div>
     )

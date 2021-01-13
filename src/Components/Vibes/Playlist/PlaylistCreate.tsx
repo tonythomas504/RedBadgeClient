@@ -8,9 +8,10 @@ import {
     DialogTitle,
     IconButton,
     TextField,
-    Typography
+    Typography,
+    ButtonBase
 } from '@material-ui/core';
-import APIURL from '../../../helpers/environment'
+// import APIURL from '../../../helpers/environment'
 
 type Props = {
     token: string,
@@ -41,7 +42,7 @@ export default class PlaylistCreate extends React.Component<Props, State>{
 
         console.log(this.props.token, this.state.title, this.state.songs)
 
-        const url = `${APIURL}/playlist/createplaylist`
+        const url = `http://localhost:4000/playlist/createplaylist`
         fetch(url, {
             method: 'POST',
             headers: new Headers({
@@ -66,9 +67,9 @@ export default class PlaylistCreate extends React.Component<Props, State>{
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" value={this.state.title} onChange={(e) => this.setState({ title: e.currentTarget.value })} placeholder="Playlist title" />
-                    <input type="text" value={this.state.songs} onChange={(e) => this.setState({ songs: e.currentTarget.value })} placeholder="Song name - Arist," />
-                    <button type="submit">Submit</button>
+                    <TextField type="text" value={this.state.title} onChange={(e) => this.setState({ title: e.currentTarget.value })} placeholder="Playlist title" />
+                    <TextField type="text" value={this.state.songs} onChange={(e) => this.setState({ songs: e.currentTarget.value })} placeholder="Song name - Arist," />
+                    <Button id="button" type="submit">Submit</Button>
 
 
                 </form>

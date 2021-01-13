@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Card, CardContent } from '@material-ui/core'
-import APIURL from '../../helpers/environment'
+// import APIURL from '../../helpers/environment'
 
 type Props = {
     comment: [],
@@ -17,7 +17,7 @@ export default class PlaylistTable extends React.Component<Props> {
     }
 
     deletePlaylist = (comment: any) => {
-        const url = `${APIURL}/comment/${comment.id}`
+        const url = `http://localhost:4000/comment/${comment.id}`
         fetch(url, {
             method: 'DELETE',
             headers: new Headers({
@@ -31,11 +31,11 @@ export default class PlaylistTable extends React.Component<Props> {
         return (
             <div>
                 {this.props.comment ? this.props.comment.map((comment: any) => (
-                    <Card key={comment.id}>
+                    <Card id="delete" key={comment.id}>
                         <CardContent>{comment.Title}</CardContent>
                         <CardContent>{comment.Body}</CardContent>
 
-                        <Button variant="outlined"
+                        <Button id="button" variant="outlined"
                             onClick={() => { this.deletePlaylist(comment) }}> Delete
                         </Button>
                     </Card>
