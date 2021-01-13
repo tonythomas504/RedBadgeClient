@@ -10,11 +10,12 @@ import {
     TextField,
     Typography
 } from '@material-ui/core';
+import APIURL from '../../../helpers/environment'
 
 type Props = {
-    token: string ,
+    token: string,
 
-    
+
 }
 
 type State = {
@@ -23,7 +24,7 @@ type State = {
 }
 
 export default class PlaylistCreate extends React.Component<Props, State>{
-    constructor(props: Props){
+    constructor(props: Props) {
         super(props)
         this.state = {
             title: '',
@@ -38,40 +39,40 @@ export default class PlaylistCreate extends React.Component<Props, State>{
     handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
 
-         console.log(this.props.token, this.state.title, this.state.songs)
+        console.log(this.props.token, this.state.title, this.state.songs)
 
-        const url = 'http://localhost:4000/playlist/createplaylist'
+        const url = `${APIURL}/playlist/createplaylist`
         fetch(url, {
             method: 'POST',
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': this.props.token
             }),
-            body: JSON.stringify({Title: this.state.title, Songs: this.state.songs})
+            body: JSON.stringify({ Title: this.state.title, Songs: this.state.songs })
         })
-        .then((res) =>  res.json())
-        .then((data) => {
-            
-            
-            console.log(data);
-            
-        })      
+            .then((res) => res.json())
+            .then((data) => {
+
+
+                console.log(data);
+
+            })
     }
 
 
-   
+
 
     render() {
-        return(
-      <div>
-            <form onSubmit={this.handleSubmit}>
-            <input type="text" value={this.state.title} onChange={(e) => this.setState({title: e.currentTarget.value})} placeholder="Playlist title"/>
-            <input type="text" value={this.state.songs} onChange={(e) => this.setState({songs: e.currentTarget.value})} placeholder="Song name - Arist,"/>
-            <button type="submit">Submit</button>
+        return (
+            <div>
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" value={this.state.title} onChange={(e) => this.setState({ title: e.currentTarget.value })} placeholder="Playlist title" />
+                    <input type="text" value={this.state.songs} onChange={(e) => this.setState({ songs: e.currentTarget.value })} placeholder="Song name - Arist," />
+                    <button type="submit">Submit</button>
 
 
-            </form>
-        </div>
+                </form>
+            </div>
         )
     }
 

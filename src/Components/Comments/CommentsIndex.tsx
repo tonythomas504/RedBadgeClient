@@ -2,6 +2,7 @@ import React from 'react'
 import CommentsCreate from './CommentsCreate'
 import CommentsEdit from './CommentsEdit'
 import CommentsTable from './CommentsTable'
+import APIURL from '../../helpers/environment'
 
 
 type Props = {
@@ -36,7 +37,7 @@ export default class CommentsIndex extends React.Component<Props, State> {
     }
 
     callComments() {
-        const url = 'http://localhost:4000/comment/mycomments'
+        const url = `${APIURL}/comment/mycomments`
 
         fetch(url, {
             method: 'GET',
