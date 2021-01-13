@@ -2,6 +2,7 @@ import React from 'react'
 import PlaylistCreate from './PlaylistCreate'
 import PlaylistEdit from './PlaylistEdit'
 import PlaylistTable from './PlaylistTable'
+import APIURL from '../../../helpers/environment'
 
 type Props = {
     updateToken: (newToken: string) => void,
@@ -42,7 +43,7 @@ export default class PlaylistIndex extends React.Component<Props, State> {
 
     callPlaylist() {
         console.log('hit')
-        const url = 'http://localhost:4000/playlist/'
+        const url = `${APIURL}/playlist/`
         fetch(url, {
             method: 'GET',
             headers: new Headers({
