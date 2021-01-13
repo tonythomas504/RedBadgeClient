@@ -2,7 +2,8 @@ import React from 'react'
 import CommentsCreate from './CommentsCreate'
 import CommentsEdit from './CommentsEdit'
 import CommentsTable from './CommentsTable'
-import APIURL from '../../helpers/environment'
+import { Button, Card, CardContent } from '@material-ui/core'
+// import APIURL from '../../helpers/environment'
 
 
 type Props = {
@@ -37,7 +38,7 @@ export default class CommentsIndex extends React.Component<Props, State> {
     }
 
     callComments() {
-        const url = `${APIURL}/comment/mycomments`
+        const url = `http://localhost:4000/comment/mycomments`
 
         fetch(url, {
             method: 'GET',
@@ -91,15 +92,17 @@ export default class CommentsIndex extends React.Component<Props, State> {
             <div>
                 <CommentsCreate token={this.props.token} />
                 {this.state.comment.map((comment: any) => (
-                    <ul>
-                        <li>{comment.Title}</li>
-                        <li>{comment.Body}</li>
-                        <li><button onClick={(event) => this.editComment(comment)}>Edit Comments</button></li>
-                    </ul>
+                    <Card id="card-comment">
+                        <CardContent><p>Title: </p>{comment.Title}</CardContent>
+                        <CardContent><p>Body: </p>{comment.Body}</CardContent>
+                        <CardContent><Button id="button" onClick={(event) => this.editComment(comment)}>Edit Comments</Button></CardContent>
+                    </Card>
                 ))}
-                <button onClick={this.callComments}>Post Your Comment</button>
+                <Button id="button" onClick={this.callComments}>Post Your Comment</Button>
 
                 {this.state.isUpdated ? <CommentsEdit commentUpdated={this.state.commentUpdated} token={this.props.token} updateOff={this.updateOff.bind(this)} fetchItems={this.callComments} editComment={this.state.editComment} /> : null}
+                <br />
+                <br />
                 <CommentsTable comment={this.state.comment} deleteComment={this.state.deleteComment} updateOn={this.updateOn.bind(this)} token={this.props.token} fetchItems={this.callComments} />
             </div>
         )

@@ -1,7 +1,6 @@
 import React from 'react'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
-import APIURL from '../../helpers/environment'
+import { Button, Card, CardContent, TextField } from '@material-ui/core'
+// import APIURL from '../../helpers/environment'
 
 type SignInFields = {
     username: string,
@@ -26,7 +25,7 @@ export default class SignIn extends React.Component<SignInProps, SignInFields>{
 
     handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault()
-        const url = `${APIURL}/user/login`
+        const url = `http://localhost:4000/user/login`
         fetch(url, {
             method: 'POST',
             body: JSON.stringify({ username: this.state.username, password: this.state.password }),
@@ -46,16 +45,16 @@ export default class SignIn extends React.Component<SignInProps, SignInFields>{
         return (
             <div>
                 <h1>Sign In - Welcome to VibeCast</h1>
-                <form onSubmit={this.handleSubmit.bind(this)}>
-                    <input type="text" value={this.state.username} onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ username: e.currentTarget.value })} placeholder="username"></input>
+                <Card id="login" onSubmit={this.handleSubmit.bind(this)}>
+                    <TextField type="text" value={this.state.username} onChange={(e) => this.setState({ username: e.currentTarget.value })} placeholder="username" />
                     <br />
-                    <input type="text" value={this.state.password} onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ password: e.currentTarget.value })} placeholder="password"></input>
+                    <TextField type="text" value={this.state.password} onChange={(e) => this.setState({ password: e.currentTarget.value })} placeholder="password" />
                     <br />
 
 
 
-                    <button type="submit">Submit</button>
-                </form>
+                    <Button id="button" type="submit">Submit</Button>
+                </Card>
             </div>
         )
     }

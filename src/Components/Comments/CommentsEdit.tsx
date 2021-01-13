@@ -1,6 +1,6 @@
 import React from 'react'
-import { TextField } from '@material-ui/core'
-import APIURL from '../../helpers/environment'
+import { TextField, Button } from '@material-ui/core'
+// import APIURL from '../../helpers/environment'
 
 type Props = {
     commentUpdated: any,
@@ -30,7 +30,7 @@ export default class CommentsEdit extends React.Component<Props, State> {
     }
 
     handleCommentUpdate = () => {
-        const url = `${APIURL}/comment/${this.props.editComment.id}`
+        const url = `http://localhost:4000/comment/${this.props.editComment.id}`
 
         fetch(url, {
             method: 'PUT',
@@ -70,7 +70,7 @@ export default class CommentsEdit extends React.Component<Props, State> {
                         onChange={(e) => this.setState({
                             editBody: e.currentTarget.value
                         })} />
-                    <button onClick={this.handleCommentUpdate}>Edit Comments</button>
+                    <Button id="button" onClick={this.handleCommentUpdate}>Edit Comments</Button>
                 </form>
             </div>
         )

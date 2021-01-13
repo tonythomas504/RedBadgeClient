@@ -2,7 +2,8 @@ import React from 'react'
 import PlaylistCreate from './PlaylistCreate'
 import PlaylistEdit from './PlaylistEdit'
 import PlaylistTable from './PlaylistTable'
-import APIURL from '../../../helpers/environment'
+import { Button, Card, CardContent } from '@material-ui/core'
+// import APIURL from '../../../helpers/environment'
 
 type Props = {
     updateToken: (newToken: string) => void,
@@ -43,7 +44,7 @@ export default class PlaylistIndex extends React.Component<Props, State> {
 
     callPlaylist() {
         console.log('hit')
-        const url = `${APIURL}/playlist/`
+        const url = `http://localhost:4000/playlist/`
         fetch(url, {
             method: 'GET',
             headers: new Headers({
@@ -97,7 +98,7 @@ export default class PlaylistIndex extends React.Component<Props, State> {
         return (
             <div>
                 {/* <CommentsIndex token={this.props.token} updateToken={this.props.updateToken} clearToken={this.props.clearToken} /> */}
-
+                <h1>Create Your Playlist Below!</h1>
                 <PlaylistCreate token={this.props.token} />
                 {/* {this.state.playlist ? this.state.playlist.map(playlist => (
                   <ul key={playlist.id}>
@@ -105,14 +106,19 @@ export default class PlaylistIndex extends React.Component<Props, State> {
                       <li>{playlist}</li>
                       <li>{playlist.songs}</li>
                   </ul>
-              )) : undefined} */} {this.state.playlist.map((playlist: any) => (
-                    <ul>
-                        <li>{playlist.Title}</li>
-                        <li>{playlist.Songs}</li>
-                        <li><button onClick={(event) => this.editPlaylist(playlist)}>Edit</button></li>
-                    </ul>
+              )) : undefined} */}
+                <br />
+                <br />
+                <br />
+
+                {this.state.playlist.map((playlist: any) => (
+                    <Card id="card">
+                        <CardContent id="first"><p>Playlist Name: </p>{playlist.Title}</CardContent>
+                        <CardContent id="first"><p>Songs: </p>{playlist.Songs}</CardContent>
+                        <CardContent><Button id="button" onClick={(event) => this.editPlaylist(playlist)}>Edit</Button></CardContent>
+                    </Card>
                 ))}
-                <button onClick={this.callPlaylist}>Submit</button>
+                <Button id="button" onClick={this.callPlaylist}>Submit</Button>
 
                 {this.state.isUpdated ? <PlaylistEdit playlistUpdated={this.state.playlistUpdated} token={this.props.token} updateOff={this.updateOff.bind(this)} fetchItems={this.callPlaylist} editPlaylist={this.state.editPlaylist} /> : null}
 

@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+#card {
+  border: solid 3px purple
+}
+
+#card-comment {
+  border: solid 3px black
+}
+
+#first {
+  
+  padding-top: 10px;
+}
+
+#button {
+  color: white;
+  background-color: black;
+  
+}
+
+#delete {
+  border: solid 3px red
+}
+
+#login {
+  background-color: #b19cd9
+}
+
