@@ -35,16 +35,17 @@ export default class PlaylistEdit extends React.Component<Props, State> {
             id: this.state.id
         }
 
-        const url = `http://localhost:4000/playlist/${id}`
+        const url = `http://localhost:4000/playlist/${this.props.editPlaylist.id}`
         fetch(url, {
-            method: 'POST',
+            method: 'PUT',
             headers: new Headers({
                 'Content-Type': 'application/json',
                 'Authorization': this.props.token
             }),
             body: JSON.stringify({ Title: this.state.editTitle, Songs: this.state.editSongs })
         }).then(() => {
-            this.props.updateOff()
+            this.props.updateOff();
+            this.props.fetchItems();
 
         })
     }
@@ -66,12 +67,12 @@ export default class PlaylistEdit extends React.Component<Props, State> {
                 <form>
                     <TextField
                         type="text"
-                        defaultValue={this.props.editPlaylist.title}
+                        value={this.state.editTitle}
                         onChange={(e) => this.setState({ editTitle: e.currentTarget.value })} />
 
                     <TextField
                         type="text"
-                        defaultValue={this.props.editPlaylist.songs}
+                        value={this.state.editSongs}
                         onChange={(e) => this.setState({ editSongs: e.currentTarget.value })} />
                     {/* <input type="text" value={this.state.editTitle} onChange={(e) => this.setState({ editTitle: e.currentTarget.value })} /> */}
                     {/* <input type="text" value={this.state.editSongs}
