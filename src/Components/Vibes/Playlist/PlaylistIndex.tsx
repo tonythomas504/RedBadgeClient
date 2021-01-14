@@ -1,6 +1,7 @@
 import React from 'react'
 import PlaylistCreate from './PlaylistCreate'
 import PlaylistEdit from './PlaylistEdit'
+
 import PlaylistTable from './PlaylistTable'
 import { Button, Card, CardContent } from '@material-ui/core'
 // import APIURL from '../../../helpers/environment'
@@ -124,6 +125,8 @@ export default class PlaylistIndex extends React.Component<Props, State> {
 
 
                 <PlaylistTable playlist={this.state.playlist} deletePlaylist={this.state.deletePlaylist} updateOn={this.updateOn.bind(this)} token={this.props.token} fetchItems={this.callPlaylist} />
+
+
             </div>
         )
     }
