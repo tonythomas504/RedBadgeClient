@@ -36,7 +36,7 @@ export default class PlaylistEdit extends React.Component<Props, State> {
             id: this.state.id
         }
 
-        const url = `${APIURL}/playlist/${this.props.editPlaylist.id}`
+        const url = `${APIURL}playlist/${this.props.editPlaylist.id}`
         fetch(url, {
             method: 'PUT',
             headers: new Headers({

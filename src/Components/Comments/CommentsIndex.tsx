@@ -38,7 +38,7 @@ export default class CommentsIndex extends React.Component<Props, State> {
     }
 
     callComments() {
-        const url = `${APIURL}/comment/mycomments`
+        const url = `${APIURL}comment/mycomments`
 
         fetch(url, {
             method: 'GET',

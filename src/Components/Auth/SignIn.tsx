@@ -25,7 +25,7 @@ export default class SignIn extends React.Component<SignInProps, SignInFields>{
 
     handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault()
-        const url = `${APIURL}/user/login`
+        const url = `${APIURL}user/login`
         fetch(url, {
             method: 'POST',
             body: JSON.stringify({ username: this.state.username, password: this.state.password }),

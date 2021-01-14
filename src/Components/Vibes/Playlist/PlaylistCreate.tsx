@@ -42,7 +42,7 @@ export default class PlaylistCreate extends React.Component<Props, State>{
 
         console.log(this.props.token, this.state.title, this.state.songs)
 
-        const url = `${APIURL}/playlist/createplaylist`
+        const url = `${APIURL}playlist/createplaylist`
         fetch(url, {
             method: 'POST',
             headers: new Headers({

@@ -30,7 +30,7 @@ export default class CommentsEdit extends React.Component<Props, State> {
     }
 
     handleCommentUpdate = () => {
-        const url = `${APIURL}/comment/${this.props.editComment.id}`
+        const url = `${APIURL}comment/${this.props.editComment.id}`
 
         fetch(url, {
             method: 'PUT',

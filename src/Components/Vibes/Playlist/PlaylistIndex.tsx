@@ -45,7 +45,7 @@ export default class PlaylistIndex extends React.Component<Props, State> {
 
     callPlaylist() {
         console.log('hit')
-        const url = `${APIURL}/playlist/`
+        const url = `${APIURL}playlist/`
         fetch(url, {
             method: 'GET',
             headers: new Headers({

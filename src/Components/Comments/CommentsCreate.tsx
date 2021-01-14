@@ -43,7 +43,7 @@ export default class CommentsCreate extends React.Component<Props, State> {
             Body: this.state.body
 
         }
-        const url = `${APIURL}/comment/createcomment`
+        const url = `${APIURL}comment/createcomment`
 
         fetch(url, {
             method: 'POST',

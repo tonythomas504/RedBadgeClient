@@ -40,7 +40,7 @@ export default class SignUp extends React.Component<SignUpProps, SignUpFields>{
         e.preventDefault();
 
 
-        const url = `${APIURL}/user/register`
+        const url = `${APIURL}user/register`
 
         fetch(url, {
             method: 'POST',

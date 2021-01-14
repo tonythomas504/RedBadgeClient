@@ -17,7 +17,7 @@ export default class PlaylistTable extends React.Component<Props> {
     }
 
     deletePlaylist = (playlist: any) => {
-        const url = `${APIURL}/playlist/${playlist.id}`
+        const url = `${APIURL}playlist/${playlist.id}`
         fetch(url, {
             method: 'DELETE',
             headers: new Headers({
