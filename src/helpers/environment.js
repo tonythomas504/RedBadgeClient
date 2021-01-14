@@ -7,7 +7,7 @@ switch (window.location.hostname) {
 
         break;
 
-    case 'tt-vibecast-server.herokuapp.com':
+    case 'tt-vibe-cast.herokuapp.com':
 
         APIURL = 'https://tt-vibecast-server.herokuapp.com/'
 
