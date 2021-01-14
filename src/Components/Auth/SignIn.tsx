@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Card, CardContent, TextField } from '@material-ui/core'
-// import APIURL from '../../helpers/environment'
+import APIURL from '../../helpers/environment'
 
 type SignInFields = {
     username: string,
@@ -25,7 +25,7 @@ export default class SignIn extends React.Component<SignInProps, SignInFields>{
 
     handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault()
-        const url = 'http://localhost:4000/user/login'
+        const url = `${APIURL}/user/login`
         fetch(url, {
             method: 'POST',
             body: JSON.stringify({ username: this.state.username, password: this.state.password }),

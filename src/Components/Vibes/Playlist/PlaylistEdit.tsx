@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField } from '@material-ui/core'
-// import APIURL from '../../../helpers/environment'
+import APIURL from '../../../helpers/environment'
 
 type Props = {
     playlistUpdated: any,
@@ -36,7 +36,7 @@ export default class PlaylistEdit extends React.Component<Props, State> {
             id: this.state.id
         }
 
-        const url = `http://localhost:4000/playlist/${this.props.editPlaylist.id}`
+        const url = `${APIURL}/playlist/${this.props.editPlaylist.id}`
         fetch(url, {
             method: 'PUT',
             headers: new Headers({

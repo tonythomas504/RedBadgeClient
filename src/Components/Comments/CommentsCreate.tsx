@@ -11,6 +11,7 @@ import {
     Typography,
     ButtonBase
 } from '@material-ui/core';
+import APIURL from '../../helpers/environment'
 
 type Props = {
     token: string
@@ -42,7 +43,7 @@ export default class CommentsCreate extends React.Component<Props, State> {
             Body: this.state.body
 
         }
-        const url = 'http://localhost:4000/comment/createcomment'
+        const url = `${APIURL}/comment/createcomment`
 
         fetch(url, {
             method: 'POST',

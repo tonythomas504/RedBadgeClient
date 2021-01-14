@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Card, CardContent, TextField } from '@material-ui/core'
 import PropTypes from 'prop-types'
-// import APIURL from '../../helpers/environment'
+import APIURL from '../../helpers/environment'
 
 
 type SignUpFields = {
@@ -40,7 +40,7 @@ export default class SignUp extends React.Component<SignUpProps, SignUpFields>{
         e.preventDefault();
 
 
-        const url = 'http://localhost:4000/user/register'
+        const url = `${APIURL}/user/register`
 
         fetch(url, {
             method: 'POST',
