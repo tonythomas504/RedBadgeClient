@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, } from 'react-router-dom'
 import Auth from './Components/Auth/Auth'
 import PlaylistIndex from './Components/Vibes/Playlist/PlaylistIndex'
 import CommentsIndex from './Components/Comments/CommentsIndex'
