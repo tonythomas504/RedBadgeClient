@@ -11,7 +11,7 @@ import {
     Typography,
     ButtonBase
 } from '@material-ui/core';
-// import APIURL from '../../../helpers/environment'
+import APIURL from '../../../helpers/environment'
 
 type Props = {
     token: string,
@@ -42,7 +42,7 @@ export default class PlaylistCreate extends React.Component<Props, State>{
 
         console.log(this.props.token, this.state.title, this.state.songs)
 
-        const url = `http://localhost:4000/playlist/createplaylist`
+        const url = `${APIURL}/playlist/createplaylist`
         fetch(url, {
             method: 'POST',
             headers: new Headers({

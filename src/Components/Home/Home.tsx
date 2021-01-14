@@ -24,3 +24,58 @@ import React from 'react'
 
 
         <CommentsIndex updateToken={this.updateToken} token={this.state.token} clearToken={this.clearToken} /> */}
+
+
+    //     render() {
+    //         return (
+    //             <div className=“container”>
+    //                 <Dialog open={true}>
+    //                 <DialogTitle id=“form-dialog-title”>
+    //                     StyList
+    //                 </DialogTitle>
+    //                     <DialogContent>
+    //                     <Login
+    //                         login={this.state.login}
+    //                         toggle={this.toggle.bind(this)}
+    //                         updateToken={this.props.updateToken} />
+    //                     </DialogContent>
+    //                     <br />
+    //                     <DialogContent>
+    //                         <Register
+    //                             login={this.state.login}
+    //                             toggle={this.toggle.bind(this)}
+    //                             updateToken={this.props.updateToken} />
+    //                     </DialogContent>
+    //                     <br />
+    //                 </Dialog>
+    //             </div>
+    //         );
+    //     }
+    // 9:46
+    // render() {
+    //         return (
+    //             <div className=“container”>
+    //                 <Dialog open={true}>
+    //                     <DialogTitle id=“form-dialog-title”>
+    //                         <strong>StyList</strong>
+    //                 </DialogTitle>
+    //                     <DialogContent>
+    //                         <DialogTitle>
+    //                         <Login
+    //                             login={this.state.login}
+    //                             toggle={this.toggle.bind(this)}
+    //                             updateToken={this.props.updateToken} />
+    //                             </DialogTitle>
+    //                     </DialogContent>
+    //                     <DialogContent>
+    //                     <DialogTitle>
+    //                         <Register
+    //                             login={this.state.login}
+    //                             toggle={this.toggle.bind(this)}
+    //                             updateToken={this.props.updateToken} />
+    //                             </DialogTitle>
+    //                     </DialogContent>
+    //                 </Dialog>
+    //             </div>
+    //         );
+    //     }

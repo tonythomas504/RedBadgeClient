@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Card, CardContent } from '@material-ui/core'
+import APIURL from '../../../helpers/environment'
 
 type Props = {
     playlist: [],
@@ -16,7 +17,7 @@ export default class PlaylistTable extends React.Component<Props> {
     }
 
     deletePlaylist = (playlist: any) => {
-        const url = `http://localhost:4000/playlist/${playlist.id}`
+        const url = `${APIURL}/playlist/${playlist.id}`
         fetch(url, {
             method: 'DELETE',
             headers: new Headers({
