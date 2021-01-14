@@ -40,7 +40,7 @@ export default class SignUp extends React.Component<SignUpProps, SignUpFields>{
         e.preventDefault();
 
 
-        const url = `http://localhost:4000/user/register`
+        const url = 'http://localhost:4000/user/register'
 
         fetch(url, {
             method: 'POST',
@@ -59,16 +59,17 @@ export default class SignUp extends React.Component<SignUpProps, SignUpFields>{
         return (
             <div>
                 <h1>Sign Up - Join VibeCast</h1>
-                <Card id="login" onSubmit={this.handleSubmit.bind(this)} >
-                    <TextField type="text" value={this.state.email} onChange={(e) => this.setState({ email: e.currentTarget.value })} placeholder="email" />
+
+                <form onSubmit={this.handleSubmit.bind(this)}>
+                    <input type="text" value={this.state.email} onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ email: e.currentTarget.value })} placeholder="email" />
                     <br />
-                    <TextField type="text" value={this.state.username} onChange={(e) => this.setState({ username: e.currentTarget.value })} placeholder="username" />
+                    <input type="text" value={this.state.username} onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ username: e.currentTarget.value })} placeholder="username" />
                     <br />
-                    <TextField type="text" value={this.state.password} onChange={(e) => this.setState({ password: e.currentTarget.value })} placeholder="password" /><br />
+                    <input type="text" value={this.state.password} onChange={(e: React.FormEvent<HTMLInputElement>) => this.setState({ password: e.currentTarget.value })} placeholder="password" /><br />
 
 
-                    <Button id="button" type="submit">Submit</Button>
-                </Card>
+                    <button id="button" type="submit">Submit</button>
+                </form>
             </div>
         )
     }
