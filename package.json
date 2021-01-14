@@ -47,8 +47,8 @@
     "@types/material-ui": "^0.21.8"
   },
   "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.0.0"
+    "node": "12.18.x",
+    "npm": "6.14.x"
   },
   "engineStrict": true
 }
