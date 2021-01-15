@@ -48,7 +48,7 @@ export default class Auth extends React.Component<AuthProps, AuthState> {
 
         return (
             <div id="register-form">
-                <Dialog open={true}>
+                <Dialog open={true} id="register-form">
                     <DialogTitle id="form-dialog-title">
                         VibeCast
                 </DialogTitle>
