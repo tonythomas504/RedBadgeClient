@@ -1,7 +1,8 @@
 import React from 'react';
 import Auth from './Components/Auth/Auth'
-import PlaylistIndex from './Components/Vibes/Playlist/PlaylistIndex'
-import CommentsIndex from './Components/Comments/CommentsIndex'
+// import PlaylistIndex from './Components/Vibes/Playlist/PlaylistIndex'
+// import CommentsIndex from './Components/Comments/CommentsIndex'
+import Home from './Components/Home/Home'
 import { Component } from 'react'
 import './App.css';
 
@@ -38,10 +39,12 @@ export default class App extends Component<{}, AuthState> {
     return (
       <div id="app-background">
 
-        {this.state.token ? <PlaylistIndex updateToken={this.updateToken} token={this.state.token} clearToken={this.clearToken} /> : <Auth updateToken={this.updateToken.bind(this)} />} <br /> <br />
+        {this.state.token ? <Home updateToken={this.updateToken.bind(this)} token={this.state.token} clearToken={this.clearToken} /> : <Auth updateToken={this.updateToken.bind(this)} />} <br /> <br />
 
 
-        <CommentsIndex updateToken={this.updateToken} token={this.state.token} clearToken={this.clearToken} />
+        {/* <CommentsIndex updateToken={this.updateToken} token={this.state.token} clearToken={this.clearToken} /> */}
+
+        {/* <PlaylistIndex updateToken={this.updateToken} token={this.state.token} clearToken={this.clearToken} /> */}
 
 
 
