@@ -2,6 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Signup from './Signup'
 import SignIn from './SignIn'
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import './Auth.css'
+
 
 
 interface AuthState {
@@ -39,21 +47,30 @@ export default class Auth extends React.Component<AuthProps, AuthState> {
 
 
         return (
-            <div>
-                {/* {this.state.isLogin ? ( */}
-                <SignIn
-                    isLogin={this.state.isLogin}
-                    isLoginHandler={this.isLoginHandler.bind(this)}
-                    updateToken={this.props.updateToken}
-                />
-                {/* // ): ( */}
-                <Signup
-                    isLogin={this.state.isLogin}
-                    isLoginHandler={this.isLoginHandler.bind(this)}
-                    updateToken={this.props.updateToken}
-                />
-                {/* // )} */}
-
+            <div id="register-form">
+                <Dialog open={true}>
+                    <DialogTitle id="form-dialog-title">
+                        VibeCast
+                </DialogTitle>
+                    <DialogContent>
+                        <SignIn
+                            isLogin={this.state.isLogin}
+                            isLoginHandler={this.isLoginHandler.bind(this)}
+                            updateToken={this.props.updateToken}
+                        />
+                    </DialogContent>
+                    <br />
+                    <br />
+                    <DialogContent>
+                        <Signup
+                            isLogin={this.state.isLogin}
+                            isLoginHandler={this.isLoginHandler.bind(this)}
+                            updateToken={this.props.updateToken}
+                        />
+                    </DialogContent>
+                    <br />
+                    <br />
+                </Dialog>
             </div>
         )
     }

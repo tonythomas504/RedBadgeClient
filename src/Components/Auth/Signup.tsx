@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, CardContent, TextField } from '@material-ui/core'
+
 import PropTypes from 'prop-types'
 import APIURL from '../../helpers/environment'
 
@@ -35,6 +35,8 @@ export default class SignUp extends React.Component<SignUpProps, SignUpFields>{
     validateForm = () => {
 
     }
+
+
 
     handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
