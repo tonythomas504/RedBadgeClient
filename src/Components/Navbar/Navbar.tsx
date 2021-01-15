@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
 }));
-const classes = useStyles();
 
 type Props = {
     clearToken: () => void;
@@ -26,14 +25,16 @@ type Props = {
 
 export default class NavBar extends React.Component<Props> {
 
+    classes = useStyles()
+
     render() {
         return (
-            <div className={classes.root}>
+            <div className={this.classes.root}>
                 <AppBar position="static">
                     <Toolbar>
-                        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <IconButton edge="start" className={this.classes.menuButton} color="inherit" aria-label="menu">
                         </IconButton>
-                        <Typography variant="h6" className={classes.title}>
+                        <Typography variant="h6" className={this.classes.title}>
                             News
           </Typography>
                         <Button onClick={this.props.clearToken} color="inherit">Logout</Button>
