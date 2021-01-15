@@ -99,7 +99,7 @@ export default class PlaylistIndex extends React.Component<Props, State> {
         return (
             <div>
                 {/* <CommentsIndex token={this.props.token} updateToken={this.props.updateToken} clearToken={this.props.clearToken} /> */}
-                <h1>Create Your Playlist Below!</h1>
+                <h1 id="playlist-create">Create Your Playlist Below!</h1>
                 <PlaylistCreate token={this.props.token} />
                 {/* {this.state.playlist ? this.state.playlist.map(playlist => (
                   <ul key={playlist.id}>

@@ -65,7 +65,7 @@ export default class PlaylistCreate extends React.Component<Props, State>{
 
     render() {
         return (
-            <div>
+            <div id="playlist-create">
                 <form onSubmit={this.handleSubmit}>
                     <TextField type="text" value={this.state.title} onChange={(e) => this.setState({ title: e.currentTarget.value })} placeholder="Playlist title" />
                     <TextField type="text" value={this.state.songs} onChange={(e) => this.setState({ songs: e.currentTarget.value })} placeholder="Song name - Arist," />

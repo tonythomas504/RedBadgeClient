@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import './App.css'
 
 
 
@@ -32,8 +33,8 @@ export default class NavBar extends React.Component<Props> {
     render() {
         return (
             <div>
-                <nav>
-                    <Button onClick={this.props.clearToken} color="inherit">Logout</Button>
+                <nav id="nav">
+                    <Button id="nav-button" onClick={this.props.clearToken} >Logout</Button>
                 </nav>
 
             </div>
